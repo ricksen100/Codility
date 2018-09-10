@@ -1,0 +1,111 @@
+package com.capg;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
+public class DemoTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		int []A;
+		int i;
+		int n;
+		System.out.println("Enter the number of elements");
+		try {
+			n=Integer.parseInt(br.readLine());
+			A=new int[n];
+			System.out.println("Enter the array");
+			for(i=0;i<n;i++)
+				A[i]=Integer.parseInt(br.readLine());
+			DemoTest test=new DemoTest();
+			test.solution(A);
+		} catch (NumberFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public int solution(int[] A)
+	{
+		
+		List<Integer> list1=new ArrayList<Integer>(A.length);
+		for(int i:A)
+		{
+			list1.add(Integer.valueOf(i));
+		}
+		Collections.sort(list1);
+		Set<Integer> s=new LinkedHashSet<Integer>(list1);
+		List<Integer> list=new ArrayList<Integer>(s);
+		for(int i=0;i<list.size();i++)
+		{
+			int a = 1;
+			if(list.get(i)>0)
+			{
+				for(int j=i;j<list.size();j++)
+				{
+					if(a==list.get(j))
+					{
+						a+=1;
+					while(j==list.size()-1)
+					{
+						System.out.println(a);
+						break;
+					}
+					}
+					else if(a!=list.get(j))
+					{
+						System.out.println(a);
+						break;
+					}
+				}
+				break;
+			}
+			else if(list.get(i)==0)
+			{
+				System.out.println(i);
+			}
+			else
+			{
+				while(i==list.size()-1)
+				{
+					System.out.println(1);
+					break;
+				}
+				a=0;
+				if(list.get(i)>0)
+				{
+					for(int j=1;j<list.size();j++)
+					{
+						if(a==list.get(j))
+						{
+							a+=1;
+						while(j==list.size()-1)
+						{
+							System.out.println(a);
+							break;
+						}
+						}
+						else if(a!=list.get(j))
+						{
+							System.out.println(a);
+							break;
+						}
+					}
+					break;
+				
+					}
+				}
+			}
+		
+		return 0;
+		
+	}
+
+}
